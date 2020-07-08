@@ -349,7 +349,7 @@ class LIS3DH_I2C(LIS3DH):
         self._buffer = bytearray(6)
         super().__init__(int1=int1, int2=int2)
     def _read_register(self, register, length):
-        return self._i2c.readfrom_mem(0x18,register,length)
+        return self._i2c.readfrom_mem(self.address, register, length)
 
     def _write_register_byte(self, register, value):
         self._buffer[0] = register & 0xFF
